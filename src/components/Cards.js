@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {Routes,Route} from "react-router-dom" 
+// import {Routes,Route} from "react-router-dom" 
 
 const Cards = () => {
   const [posts, setPosts] = useState([]);
@@ -26,10 +26,10 @@ const Cards = () => {
         {posts.map((element, id) => {
           return (<>
           <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={element.image} style={{height:"16rem"}}  className="mt-3"/>
+          <Card.Img variant="top" key={id} src={element.image} style={{height:"16rem"}}  className="mt-3"/>
           <Card.Body>
-            <Card.Title>{element.Title}</Card.Title>
-            <Card.Text>
+            <Card.Title key={id}>{element.Title}</Card.Title>
+            <Card.Text >
              $ {element.price}
             </Card.Text>
             <Button variant="primary" className="col-lg-12">Add to Cart</Button>
