@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container'
 import Badge from '@mui/material/Badge'
 import Nav from 'react-bootstrap/Nav';
 import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem';
 import {NavLink} from 'react-router-dom';
 
 
@@ -44,9 +43,14 @@ const Navibar=() => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <div className='card_details'>
+        <i className='fas fa-close smallclose'onClick={handleClose} style={{position:'absolute',top:2 ,right:20,fontSize:23,cursor:'pointer'}}></i>
+        <p style={{fontSize:22}}>Your cart is empty</p>
+        <img src="./102661.png" alt="" className='emptycart_img' style={{width:"5rem",padding:10}}/>
+
+
+
+        </div>
       </Menu>
       </Navbar>
 </>
