@@ -7,7 +7,7 @@ import CardsDetails from './components/CardsDetails';
 import { useState } from 'react';
 
 function App() {
-  const[id,setId]=useState(1)
+  const[id,setId]=useState()
   return (
     <>
     

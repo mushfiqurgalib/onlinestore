@@ -6,18 +6,21 @@ import {useParams} from "react-router-dom"
  const CardsDetails = () => {
 
     const[data,setData]=useState([])
-    const id =useParams();
+    const {id} =useParams();
+    console.log(id)
+    const selected_id=id;
     useEffect(() => {
         axios
-          .get(`https://fakestoreapi.com/products/${id}`)
+          .get(`https://fakestoreapi.com/products/${selected_id}`)
+
           .then((res) => {
             console.log(res);
-            setData(res.data)
+            setData(res.data.data)
           })
           .catch((err) => {
             console.log(err);
           });
-      },[id]);
+      },[selected_id]);
 
 
   return (
@@ -25,7 +28,7 @@ import {useParams} from "react-router-dom"
     <div className='container mt-2'>
     <h2 className='text-center'>Items Details Page
         </h2>
-        <h2>{JSON.stringify(id)}</h2>
+        <h2>{JSON.stringify(id.title)}</h2>
         <section className='container mt-3'>
        
 
@@ -33,7 +36,7 @@ import {useParams} from "react-router-dom"
               <Table>
                 <tr>
                   <td>
-                    <p> <strong>Restaurant</strong>  : {id.rname}</p>
+                    <p> <strong>Restaurant</strong>  : {id.title}</p>
                     <p> <strong>Price</strong>  : ₹{id.price}</p>
                     <p> <strong>Dishes</strong>  : {id.address}</p>
                     <p> <strong>Total</strong>  :₹  {id.price * id.qnty}</p>
