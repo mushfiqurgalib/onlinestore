@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {Routes,Route} from "react-router-dom" 
+
+import { useDispatch } from "react-redux";
+import { ADD } from "../redux/actions/action";
 
 const Cards = () => {
   const [posts, setPosts] = useState([]);
@@ -18,7 +20,11 @@ const Cards = () => {
         console.log(err);
       });
   },[]);
+  const dispatch = useDispatch();
 
+  const send = (e) =>{
+    dispatch(ADD(e));
+  }
   return (
     <div className="container mt-3">
       <h2 className="text-center">Add to Cart</h2>
@@ -28,11 +34,11 @@ const Cards = () => {
           <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={element.image} style={{height:"16rem"}}  className="mt-3"/>
           <Card.Body>
-            <Card.Title>{element.Title}</Card.Title>
+            <Card.Title key={id}>{element.Title}</Card.Title>
             <Card.Text>
              $ {element.price}
             </Card.Text>
-            <Button variant="primary" className="col-lg-12">Add to Cart</Button>
+            <Button variant="primary"  onClick={()=>send(element)} className="col-lg-12">Add to Cart</Button>
           </Card.Body>
         </Card></>)
         })}
