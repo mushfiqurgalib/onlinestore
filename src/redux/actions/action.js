@@ -4,3 +4,10 @@ export const ADD = (item) =>{
         payload : item
     }
 }
+
+export const DLT = (id) =>{
+    return {
+        type:"RMV_CART",
+        payload : id 
+    }
+}

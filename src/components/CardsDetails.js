@@ -1,16 +1,42 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useNavigation, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { DLT } from "../redux/actions/action";
+import { useDispatch } from "react-redux";
 
 const CardsDetails = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
-  const selected_id = id;
+  console.log(id);
+  //const selected_id = id;
+  const getdata = useSelector((state) => state.cartreducer.carts);
+  console.log(getdata)
+
+  const dispatch = useDispatch();
+  const history=useNavigate();
+  const dlt = (id)=>{
+    dispatch(DLT(id));
+    history("/");
+  }
+
+  
+// const compare=()=>{
+//   let comparedata = getdata.filter((e)=>{
+//     return id === e.id
+//   });
+//   console.log(comparedata);
+//   setData(comparedata);
+// }
+
+// useEffect(()=>{
+// compare();}
+// ,[])
 
   useEffect(() => {
     axios
-      .get(`https://fakestoreapi.com/products/${selected_id}`)
+      .get(`https://fakestoreapi.com/products/${id}`)
       .then((res) => {
         console.log(res);
         setData(res.data);
@@ -18,11 +44,11 @@ const CardsDetails = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <>
-      <div className="container mt-2">
+     <div className="container mt-2">
         <h2 className="text-center">Items Details Page</h2>
         <div className="items_img">
           <img variant="top" src={data.image} alt=""  style={{height:"16rem"}}  className="mt-3"/>
@@ -63,10 +89,10 @@ const CardsDetails = () => {
                       }}
                    
                     >
-                      {JSON.stringify(data.rating)} ★
+                      {JSON.stringify(data.rating.rate)} ★
                     </span>
                   </p>
-                  <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}}></i>	</span></p>
+                  <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={()=>dlt(data.id)}></i>	</span></p>
                 </td>
               </tr>
             </Table>
