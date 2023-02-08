@@ -28,13 +28,13 @@ const Cards = () => {
     <div className="container mt-3">
       <h2 className="text-center">Add to Cart</h2>
       <div className="row d-flex justify-content-center align-items-center">
-        {posts.map((element, id) => {
+        {posts.map((element) => {
           return (<>
           <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" key={id} src={element.image} style={{height:"16rem"}}  className="mt-3"/>
+          <Card.Img variant="top" key={element} src={element.image} style={{height:"16rem"}}  className="mt-3"/>
           <Card.Body>
-            <Card.Title key={id}>{element.Title}</Card.Title>
-            <Card.Text>
+            <Card.Title key={element}>{element.Title}</Card.Title>
+            <Card.Text >
              $ {element.price}
             </Card.Text>
             <Button variant="primary"  onClick={()=>send(element)} className="col-lg-12">Add to Cart</Button>

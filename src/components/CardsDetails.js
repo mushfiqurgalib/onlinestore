@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
-import { useNavigate, useNavigation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { DLT } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
@@ -56,6 +56,7 @@ const CardsDetails = () => {
         {<section className="container mt-3">
           <div className="details">
             <Table>
+              <tbody>
               <tr>
                 <td>
                   <p>
@@ -89,12 +90,13 @@ const CardsDetails = () => {
                       }}
                    
                     >
-                      {JSON.stringify(data.rating.rate)} ★
+                      {JSON.stringify(data.rating)} ★
                     </span>
                   </p>
                   <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={()=>dlt(data.id)}></i>	</span></p>
                 </td>
               </tr>
+              </tbody>
             </Table>
           </div>
         </section>}

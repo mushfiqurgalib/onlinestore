@@ -88,7 +88,7 @@ const dlt = (id)=>{
                      
                         return(
                           <>
-                         
+                          
                           <tr>
                             <td>
                               <NavLink to={`/cart/${e.id}`} onClick={handleClose}>
@@ -103,6 +103,7 @@ const dlt = (id)=>{
                                                         <i className='fas fa-trash largetrash'></i>
                             </td>
                           </tr>
+                          
                           </>
                         )
                       })
