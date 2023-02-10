@@ -1,25 +1,25 @@
-export const ADD = (item) =>{
+export const ADD = (item) => {
     return {
-        type:"ADD_CART",
-        payload : item
+        type: "ADD_CART",
+        payload: item
     }
 }
 
-export const DLT = (id) =>{
+export const DLT = (id) => {
     return {
-        type:"RMV_CART",
-        payload : id 
+        type: "RMV_CART",
+        payload: id
     }
 }
 
-export const Update_data = (update,ind)=>{
-    
-    console.log(ind)
-   
-    return{
-        type:"UPDATE_DATA",
+export const Update_data = (update, ind) => {
+
+
+
+    return {
+        type: "UPDATE_DATA",
         payload: update,
-        d:ind
-       
+        d: ind
+
     }
 }

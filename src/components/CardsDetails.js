@@ -15,24 +15,24 @@ const CardsDetails = () => {
   console.log(getdata)
 
   const dispatch = useDispatch();
-  const history=useNavigate();
-  const dlt = (id)=>{
+  const history = useNavigate();
+  const dlt = (id) => {
     dispatch(DLT(id));
     history("/");
   }
 
-  
-// const compare=()=>{
-//   let comparedata = getdata.filter((e)=>{
-//     return id === e.id
-//   });
-//   console.log(comparedata);
-//   setData(comparedata);
-// }
 
-// useEffect(()=>{
-// compare();}
-// ,[])
+  // const compare=()=>{
+  //   let comparedata = getdata.filter((e)=>{
+  //     return id === e.id
+  //   });
+  //   console.log(comparedata);
+  //   setData(comparedata);
+  // }
+
+  // useEffect(()=>{
+  // compare();}
+  // ,[])
 
   useEffect(() => {
     axios
@@ -48,54 +48,54 @@ const CardsDetails = () => {
 
   return (
     <>
-     <div className="container mt-2">
+      <div className="container mt-2">
         <h2 className="text-center">Items Details Page</h2>
         <div className="items_img">
-          <img variant="top" src={data.image} alt=""  style={{height:"16rem"}}  className="mt-3"/>
+          <img variant="top" src={data.image} alt="" style={{ height: "16rem" }} className="mt-3" />
         </div>
         {<section className="container mt-3">
           <div className="details">
             <Table>
               <tbody>
-              <tr>
-                <td>
-                  <p>
+                <tr>
+                  <td>
+                    <p>
 
-                    <strong>Product</strong> : {data.title}
-                  </p>
-                  <p>
+                      <strong>Product</strong> : {data.title}
+                    </p>
+                    <p>
 
-                    <strong>Price</strong> : $ {data.price}
-                  </p>
+                      <strong>Price</strong> : $ {data.price}
+                    </p>
 
-                  <div
-                    className="mt-5 d-flex justify-content-between align-items-center"
-                    style={{
-                      width: 100,
-                      cursor: "pointer",
-                      // background: "#ddd",
-                      // color: "#111",
-                    }}
-                  ></div>
-                </td>
-                <td>
-                  
-                  <p>
-                    <strong>Rating :</strong>
-                    <span    style={{
+                    <div
+                      className="mt-5 d-flex justify-content-between align-items-center"
+                      style={{
+                        width: 100,
+                        cursor: "pointer",
+                        // background: "#ddd",
+                        // color: "#111",
+                      }}
+                    ></div>
+                  </td>
+                  <td>
+
+                    <p>
+                      <strong>Rating :</strong>
+                      <span style={{
                         background: "green",
                         color: "#fff",
                         padding: "2px 5px",
                         borderRadius: "5px",
                       }}
-                   
-                    >
-                      {JSON.stringify(data.rating)} ★
-                    </span>
-                  </p>
-                  <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={()=>dlt(data.id)}></i>	</span></p>
-                </td>
-              </tr>
+
+                      >
+                        {JSON.stringify(data.rating)} ★
+                      </span>
+                    </p>
+                    <p><strong>Remove :</strong> <span ><i className='fas fa-trash' style={{ color: "red", fontSize: 20, cursor: "pointer" }} onClick={() => dlt(data.id)}></i>	</span></p>
+                  </td>
+                </tr>
               </tbody>
             </Table>
           </div>
