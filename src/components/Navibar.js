@@ -11,11 +11,12 @@ import { DLT } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
 
 
+
 const Navibar = () => {
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log(getdata);
 
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -24,16 +25,21 @@ const Navibar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-const dlt = (id)=>{
-  dispatch(DLT(id))
-}
+  const dlt = (id) => {
+    dispatch(DLT(id))
+  }
 
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
+          {/* <NavLink to='/form'>
+          <i
+            className="fa-solid fa-plus text-light"
+            style={{ fontSize: 25, cursor: "pointer" }}
+          ></i></NavLink> */}
           <NavLink to="/" className="text-decoration-none text-light mx-3">
-           OnlineShop
+            OnlineShop
           </NavLink>
           {/* <Navbar.Brand href="#home">FoodShop</Navbar.Brand> */}
           <Nav className="me-auto">
@@ -84,31 +90,31 @@ const dlt = (id)=>{
                   </thead>
                   <tbody>
                     {
-                      getdata.map((e)=>{
-                     
-                        return(
+                      getdata.map((e) => {
+
+                        return (
                           <>
-                          
-                          <tr>
-                            <td>
-                              <NavLink to={`/cart/${e.id}`} onClick={handleClose}>
-                              <img src={e.image} style={{width:"5rem",height:"5rem"}} alt=""/>
-                              </NavLink>
-                            </td>
-                            <td>
-                              <p>{e.title}</p>
-                              <p>$ : {e.price}</p>
+
+                            <tr>
+                              <td>
+                                <NavLink to={`/cart/${e.id}`} onClick={handleClose}>
+                                  <img src={e.image} style={{ width: "5rem", height: "5rem" }} alt="" />
+                                </NavLink>
                               </td>
-                              <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={()=>dlt(e.id)} >
-                                                        <i className='fas fa-trash largetrash'></i>
-                            </td>
-                          </tr>
-                          
+                              <td>
+                                <p>{e.title}</p>
+                                <p>$ : {e.price}</p>
+                              </td>
+                              <td className='mt-5' style={{ color: "red", fontSize: 20, cursor: "pointer" }} onClick={() => dlt(e.id)} >
+                                <i className='fas fa-trash largetrash'></i>
+                              </td>
+                            </tr>
+
                           </>
                         )
                       })
                     }
-                     
+
                   </tbody>
                 </Table>
               </div> :

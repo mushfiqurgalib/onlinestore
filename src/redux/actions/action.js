@@ -11,3 +11,15 @@ export const DLT = (id) =>{
         payload : id 
     }
 }
+
+export const Update_data = (update,ind)=>{
+    
+    console.log(ind)
+   
+    return{
+        type:"UPDATE_DATA",
+        payload: update,
+        d:ind
+       
+    }
+}
