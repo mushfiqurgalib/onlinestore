@@ -13,8 +13,8 @@ export const DLT = (id) => {
 }
 
 export const Update_data = (update, ind) => {
-
-
+    console.log(update);
+    console.log(ind);
 
     return {
         type: "UPDATE_DATA",

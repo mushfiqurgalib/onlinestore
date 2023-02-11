@@ -22,7 +22,7 @@ const Cards = () => {
     setUpdate(element.price);
     setind(element.id);
 
-    console.log(update)
+    console.log(ind)
   }
 
 
@@ -58,6 +58,7 @@ const Cards = () => {
   }
 
   const usertask_update = (update, ind) => {
+    console.log(update)
     dispatch(Update_data(update, ind));
     handleClose()
   }
