@@ -12,14 +12,13 @@ export const DLT = (id) => {
     }
 }
 
-export const Update_data = (update, ind) => {
-    console.log(update);
-    console.log(ind);
+export const Update_data = (update, ind,{posts}) => {
 
     return {
         type: "UPDATE_DATA",
         payload: update,
-        d: ind
+        d: ind,
+        p: {posts}
 
     }
 }
