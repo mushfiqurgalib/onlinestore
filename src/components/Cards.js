@@ -39,22 +39,31 @@ const Cards = () => {
   function getUsers() {
 
     axios.get("https://fakestoreapi.com/products").then((res) => {
-      setPosts(res.data)
+      setPosts(res.data);
+      
     }).catch((err) => {
       console.log(err);
     });
   }
 
-  function updateuser(update, ind) {
-    axios.put(`https://fakestoreapi.com/products/${ind}`, {
+  function updateuser(price, ind) {
+    console.log(price);
+    console.log(ind);
+    fetch(`https://fakestoreapi.com/products/${ind}`, {
+      method:"PUT",
+      body:JSON.stringify({price})
       
-
-      price: {update}
+      
     }).then((result)=> {
-  result.json().then((res) => {
+  result.json().then((result) => {
+    console.log(result)
+    setUpdate(price)
     getUsers()
   })
+}).catch((err)=>{
+  console.log(err);
 })
+handleClose()
       }
 
 //   useEffect(()=>{
@@ -107,7 +116,7 @@ return (
         <Modal.Header closeButton>
           <Modal.Title>Product Price</Modal.Title>
           <div className="todo col-lg-5 mx-auto d-flex justify-content-between align-items-center">
-            <input name="price" value={update.price}
+            <input name="price" value={update}
               onChange={(e) => setUpdate(e.target.value)} className='form-control col-lg-5 mt-2' />
           </div>
         </Modal.Header>
@@ -115,7 +124,7 @@ return (
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={updateuser(update, ind)}>
+          <Button variant="primary" onClick={()=>updateuser(update, ind)} >
             Save Changes
           </Button>
 
